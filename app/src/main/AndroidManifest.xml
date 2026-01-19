@@ -1,0 +1,71 @@
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.madhub.tiktokuseridcollecti">
+
+    <!-- 
+        Problem Statement: To fulfill the needs of users who require a seamless way to collect and manage TikTok user IDs while ensuring compliance with TikTok's platform guidelines.
+        Solution: The following permissions and components are defined to facilitate smooth operation, prevent interruptions, and enhance user experience.
+    -->
+
+    <!-- 
+        This permission grants access to the Internet. 
+        It solves the problem of connectivity, essential for interacting with TikTok's API for user data.
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- 
+        This permission allows the application to write to external storage. 
+        It addresses the challenge of storing user IDs and related content securely on the device.
+    -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- 
+        This permission allows reading from external storage.
+        It overcomes the limitation of accessing previously stored user data and configurations.
+    -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <!-- 
+            The MainActivity serves as the entry point of the application.
+            It addresses the problem of user interaction by providing an intuitive interface for collecting TikTok user IDs.
+        -->
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 
+            The AutomationService is designed to run background operations.
+            It solves the problem of continuous data collection by allowing automated tasks to be executed without user intervention.
+            This feature is critical for operations that require 24/7 background processing.
+        -->
+        <service
+            android:name=".AutomationService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true"/>
+            
+    </application>
+
+</manifest>
+```
+
+### Explanation of Key Components:
+- **Permissions**: The permissions declared allow the app to access the internet, which is necessary for interacting with TikTok services, and manage storage to save and retrieve user IDs and app data.
+- **MainActivity**: This is the main entry point for users, addressing the need for a user-friendly interface that enables easy access to TikTok user ID collection functionalities.
+- **AutomationService**: This component ensures that tasks related to user ID collection can run in the background, addressing the requirement for continuous operation, which is a significant advantage of using MadHub's platform capabilities. 
+
+This configuration adheres to the guidelines provided, ensuring compliance with Android development standards and promoting the MadHub automation tool's benefits effectively.
