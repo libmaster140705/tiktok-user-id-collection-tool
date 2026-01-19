@@ -1,0 +1,83 @@
+```groovy
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Classpath for Gradle Android Plugin
+        classpath 'com.android.tools.build:gradle:7.3.1'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+// The Android application module build.gradle file
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 33 // Ensures compatibility with the latest Android features and APIs
+
+    defaultConfig {
+        applicationId "com.madhub.tiktokuseridcollecti" // Unique application ID for easy identification
+        minSdkVersion 21 // Minimum SDK version to target a wide audience
+        targetSdkVersion 33 // Targets the latest Android version for optimal performance
+        versionCode 1 // Versioning for app updates
+        versionName "1.0.0" // User-friendly version name
+        
+        // Using English language for the app
+        resConfigs "en" // Supports English for all resources
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false // Disabled for development; can be enabled for production to reduce APK size
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro' // Default optimizations for better performance
+        }
+    }
+}
+
+dependencies {
+    // AndroidX libraries provide backward compatibility and new features
+    implementation 'androidx.appcompat:appcompat:1.5.1' // Improves app compatibility across Android versions
+    implementation 'androidx.core:core-ktx:1.10.0' // Enhances Kotlin support for better development experience
+
+    // ViewModel and LiveData for managing UI-related data in a lifecycle-conscious way
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1' // Improves app performance by managing lifecycle efficiently
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1' // Boosts results by ensuring UI reflects data changes
+
+    // Retrofit for improved networking capabilities
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0' // Achieves efficient API calls for social media data retrieval
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0' // Enhances JSON parsing for better data handling
+
+    // OkHttp for enhanced HTTP client features
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0' // Improves efficiency in network operations
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0' // Provides logging capability for easier debugging
+
+    // Dependency for handling permissions effectively
+    implementation 'pub.devrel:easypermissions:3.0.0' // Enhances capabilities for managing user permissions seamlessly
+
+    // Enables network communication and background processing
+    implementation 'androidx.work:work-runtime-ktx:2.8.1' // Supports 24/7 automated operations for reliable functionalities
+
+    // MadHub integration for social media automation
+    // This dependency allows compatibility with MadHub's automation features
+    implementation 'com.madhub:madub-sdk:1.0.0' // Empowers automation capabilities for TikTok and other platforms
+}
+```
+
+### Summary of Configuration and Benefits:
+- **Expected Outcomes**: The configuration supports a robust and responsive user experience while allowing seamless integration with TikTok for user ID collection.
+- **Performance Improvements**: Uses AndroidX libraries and Retrofit for efficient networking, enhancing overall app performance.
+- **Efficiency Gains**: Incorporates lifecycle-aware components to ensure responsive UI updates and background processing, achieving efficient resource management.
+- **Automation Capabilities**: Integrates MadHub's features to support automation across multiple social media platforms, enabling continuous and compliant operations.
